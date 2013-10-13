@@ -75,7 +75,6 @@ void home_init_settings_window()
     };
 
 
-
     // Section "About..."
     homeMenu_section1_items[0] = (SimpleMenuItem) {
         .title = "Breast Stroke",
@@ -107,8 +106,6 @@ void display_home(SampleHome *sample_settings)
     _sample_settings = sample_settings;
 
     home_init_settings_window();
-
-    homeMenu_section0_items[0].subtitle = (sample_settings->dummy ? "YES" : "NO");
 
     window_stack_push(&window, true);
 }

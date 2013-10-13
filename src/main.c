@@ -56,10 +56,10 @@ SampleHome sample_home = {
 void select_long_click_handler(ClickRecognizerRef recognizer, Window *window) {
     (void)recognizer;
     (void)window;
-    
+
     display_settings(&sample_settings);
-    
-	
+
+
     // As another windows is pushed, the button-release is not handler by the actionbar. We need to unselect the button manually
     action_bar_layer.is_highlighted = 0;
 }
@@ -81,16 +81,16 @@ void down_single_click_handler(ClickRecognizerRef recognizer, Window *window) {
 
 void click_config_provider(ClickConfig **config, Window *window) {
     (void)window;
-    
+
     config[BUTTON_ID_SELECT]->long_click.handler = (ClickHandler) select_long_click_handler;
     config[BUTTON_ID_SELECT]->long_click.release_handler = (ClickHandler) select_long_release_handler;
-    
+
     config[BUTTON_ID_UP]->click.handler = (ClickHandler) up_single_click_handler;
     config[BUTTON_ID_UP]->click.repeat_interval_ms = 100;
-    
+
     config[BUTTON_ID_DOWN]->click.handler = (ClickHandler) down_single_click_handler;
     config[BUTTON_ID_DOWN]->click.repeat_interval_ms = 100;
-    
+
 }
 
 
@@ -111,29 +111,29 @@ void handle_main_disappear(Window *window)
 void handle_init(AppContextRef ctx)
 {
     app = ctx;
-    
+
     window_init(&window, "Sample");
     window_set_window_handlers(&window, (WindowHandlers) {
         .appear = (WindowHandler)handle_main_appear,
         .disappear = (WindowHandler)handle_main_disappear
     });
-    
+
     // Init resources
     resource_init_current_app(&APP_RESOURCES);
-    
-    // Load some bitmaps 
-    heap_bitmap_init(&button_image_up, RESOURCE_ID_IMAGE_BUTTON_UP);
-    heap_bitmap_init(&button_image_down, RESOURCE_ID_IMAGE_BUTTON_DOWN);
-    heap_bitmap_init(&button_image_setup, RESOURCE_ID_IMAGE_BUTTON_SETUP);
-    
-    action_bar_layer_init(&action_bar_layer);
-    action_bar_layer_set_click_config_provider(&action_bar_layer, (ClickConfigProvider) click_config_provider);
-    action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_UP, &button_image_up.bmp);
-    action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_SELECT, &button_image_setup.bmp);
-    action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_DOWN, &button_image_down.bmp);
-    
-    window_stack_push(&window, true);
-	
+
+    // Load some bitmaps
+    //heap_bitmap_init(&button_image_up, RESOURCE_ID_IMAGE_BUTTON_UP);
+    //heap_bitmap_init(&button_image_down, RESOURCE_ID_IMAGE_BUTTON_DOWN);
+    //heap_bitmap_init(&button_image_setup, RESOURCE_ID_IMAGE_BUTTON_SETUP);
+
+    //action_bar_layer_init(&action_bar_layer);
+    //action_bar_layer_set_click_config_provider(&action_bar_layer, (ClickConfigProvider) click_config_provider);
+    //action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_UP, &button_image_up.bmp);
+    //action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_SELECT, &button_image_setup.bmp);
+    //action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_DOWN, &button_image_down.bmp);
+
+    //window_stack_push(&window, true);
+
 	//Display the settings straight-away
 	display_home(&sample_home);
 }
