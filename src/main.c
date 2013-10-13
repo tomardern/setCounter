@@ -51,10 +51,6 @@ SampleSettings sample_settings  = {
     false
 };
 
-SampleHome sample_home = {
-	false
-};
-
 void select_long_click_handler(ClickRecognizerRef recognizer, Window *window) {
     (void)recognizer;
     (void)window;
