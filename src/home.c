@@ -12,7 +12,6 @@
 #include "pebble_fonts.h"
 
 #include "home.h"
-#include "newset.h"
 
 static Window window;
 static SimpleMenuLayer homeMenu_layer;
