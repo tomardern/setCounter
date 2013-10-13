@@ -135,7 +135,7 @@ void handle_init(AppContextRef ctx)
     window_stack_push(&window, true);
 
 	//Display the settings straight-away
-	display_home(&sample_home);
+	display_home();
 }
 
 void handle_deinit(AppContextRef ctx)
