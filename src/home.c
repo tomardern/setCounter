@@ -5,7 +5,7 @@
 //  Created by Dirk Mika on 08.05.13.
 //
 //
-//This is a test of the pull system and again
+//This is a test of the pull system and again and again!
 
 #include "pebble_os.h"
 #include "pebble_app.h"
