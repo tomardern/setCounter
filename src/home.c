@@ -17,7 +17,7 @@
 static Window window;
 static SimpleMenuLayer homeMenu_layer;
 static SimpleMenuSection homeMenu_sections[2];      // Two sections
-static SimpleMenuItem homeMenu_section0_items[2];   // Section 0 (Some settings...) with one entry
+static SimpleMenuItem homeMenu_section0_items[3];   // Section 0 (Some settings...) with one entry
 static SimpleMenuItem homeMenu_section1_items[5];   // Section 1 (About...) with one entry
 
 HeapBitmap menu_icon_0_0;
@@ -67,9 +67,15 @@ void home_init_settings_window()
 
     // Section "Settings..."
     homeMenu_section0_items[0] = (SimpleMenuItem) {
-        .title = "New Set",
+        .title = "Set Switch",
         .icon = &menu_icon_0_0.bmp,
         .callback = &homeMenu_layer_section0_select_callback
+    };
+     // Section "Settings..."
+    homeMenu_section0_items[0] = (SimpleMenuItem) {
+        .title = "New Set",
+        .icon = &menu_icon_0_0.bmp,
+        .callback = NULL
     };
     homeMenu_section0_items[1] = (SimpleMenuItem) {
         .title = "Sync Sets",
