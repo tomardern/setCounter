@@ -163,7 +163,7 @@ void handle_init_old(AppContextRef ctx)
     action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_SELECT, &button_image_setup.bmp);
     action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_DOWN, &button_image_down.bmp);
 
-    window_stack_push(&window, true);
+    //window_stack_push(&window, true);
 
 	//Display the settings straight-away
 	display_home(&sample_home);
