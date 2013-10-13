@@ -18,19 +18,16 @@ static Window window;
 NumberWindow numwin_duration;
 NumberWindow numwin_interval;
 
-void newset_init_settings_window()
-{
-
-    window_init(&window, "Timer Settings");
-    window_set_background_color(&window, GColorWhite);
-
-    number_window_init(number_window)
-
-
-    window_stack_push((Window *) &number_window, true);
-
-
+void numwin_duration_selected(struct NumberWindow *number_window, void *context) {
+  //duration = number_window_get_value(&numwin_duration);
+  window_stack_push((Window*)&numwin_interval, true);
 }
+
+void numwin_interval_selected(struct NumberWindow *number_window, void *context) {
+  //interval = number_window_get_value(&numwin_interval);
+  //window_stack_push(&window_main, true);
+}
+
 
 void display_newset()
 {
@@ -63,12 +60,3 @@ void display_newset()
     //window_stack_push(&window, true);
 }
 
-void numwin_duration_selected(struct NumberWindow *number_window, void *context) {
-  //duration = number_window_get_value(&numwin_duration);
-  window_stack_push((Window*)&numwin_interval, true);
-}
-
-void numwin_interval_selected(struct NumberWindow *number_window, void *context) {
-  //interval = number_window_get_value(&numwin_interval);
-  //window_stack_push(&window_main, true);
-}
