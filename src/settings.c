@@ -27,7 +27,7 @@ SampleSettings *_sample_settings;
 void menu_layer_section0_select_callback(int index, void *context)
 {
     bool new_value;
-    
+
     switch (index) {
         case 0:
             _sample_settings->dummy = !_sample_settings->dummy;
@@ -58,11 +58,11 @@ void init_settings_window()
         .appear = (WindowHandler)handle_appear,
         .unload = (WindowHandler)handle_unload
     });
-    
+
     // Don't forget to deinit
     heap_bitmap_init(&menu_icon_0_0, RESOURCE_ID_IMAGE_SETTINGS_SAMPLE);
     heap_bitmap_init(&menu_icon_1_0, RESOURCE_ID_IMAGE_MENU_ICON);
-    
+
     // Section "Settings..."
     menu_section0_items[0] = (SimpleMenuItem) {
         .title = "Dummy",
@@ -75,7 +75,7 @@ void init_settings_window()
         .items = menu_section0_items,
         .num_items = ARRAY_LENGTH(menu_section0_items)
     };
-    
+
     // Section "About..."
     menu_section1_items[0] = (SimpleMenuItem) {
         .title = "Sample V1.0",
@@ -89,7 +89,7 @@ void init_settings_window()
         .items = menu_section1_items,
         .num_items = ARRAY_LENGTH(menu_section1_items)
     };
-    
+
     simple_menu_layer_init(&menu_layer, window.layer.frame, &window, menu_sections, 2, NULL);
     layer_add_child(&window.layer, &menu_layer.menu.scroll_layer.layer);
 }
@@ -97,10 +97,10 @@ void init_settings_window()
 void display_settings(SampleSettings *sample_settings)
 {
     _sample_settings = sample_settings;
-    
+
     init_settings_window();
-    
+
     menu_section0_items[0].subtitle = (sample_settings->dummy ? "YES" : "NO");
-    
+
     window_stack_push(&window, true);
 }

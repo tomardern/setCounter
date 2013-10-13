@@ -25,7 +25,7 @@ HeapBitmap menu_icon_1_0;
 
 
 //menu_layer_reload_data(&homeMenu_layer.menu);
-void menu_layer_section0_select_callback(int index, void *context)
+void menulayer_section0_select_callback(int index, void *context)
 {
 
     switch (index) {
@@ -67,7 +67,7 @@ void home_init_settings_window()
     homeMenu_section0_items[0] = (SimpleMenuItem) {
         .title = "New Set",
         .icon = &menu_icon_0_0.bmp,
-        .callback = &menu_layer_section0_select_callback
+        .callback = &menulayer_section0_select_callback
     };
     homeMenu_section0_items[1] = (SimpleMenuItem) {
         .title = "Sync Sets",
