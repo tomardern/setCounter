@@ -33,7 +33,7 @@ void menu_layer_section0_select_callback(int index, void *context)
 
     switch (index) {
         case 0:
-            display_settings(&sample_settings);
+            display_newset();
             break;
         default:
             break;
