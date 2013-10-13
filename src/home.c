@@ -12,7 +12,7 @@
 #include "pebble_fonts.h"
 
 #include "home.h"
-#include "settings.h"
+#include "newset.h"
 
 static Window window;
 static SimpleMenuLayer homeMenu_layer;
@@ -22,9 +22,6 @@ static SimpleMenuItem homeMenu_section1_items[2];   // Section 1 (About...) with
 
 HeapBitmap menu_icon_0_0;
 HeapBitmap menu_icon_1_0;
-
-SampleHome *_sample_settings;
-
 
 
 //menu_layer_reload_data(&homeMenu_layer.menu);
@@ -113,11 +110,9 @@ void home_init_settings_window()
     layer_add_child(&window.layer, &homeMenu_layer.menu.scroll_layer.layer);
 }
 
-void display_home(SampleHome *sample_settings)
+void display_home()
 {
-    _sample_settings = sample_settings;
 
     home_init_settings_window();
-
     window_stack_push(&window, true);
 }
