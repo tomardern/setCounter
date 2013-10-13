@@ -18,7 +18,7 @@ static Window window;
 static SimpleMenuLayer homeMenu_layer;
 static SimpleMenuSection homeMenu_sections[2];      // Two sections
 static SimpleMenuItem homeMenu_section0_items[2];   // Section 0 (Some settings...) with one entry
-static SimpleMenuItem homeMenu_section1_items[1];   // Section 1 (About...) with one entry
+static SimpleMenuItem homeMenu_section1_items[2];   // Section 1 (About...) with one entry
 
 HeapBitmap menu_icon_0_0;
 HeapBitmap menu_icon_1_0;
