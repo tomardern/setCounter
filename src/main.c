@@ -98,17 +98,48 @@ void click_config_provider(ClickConfig **config, Window *window) {
 void handle_main_appear(Window *window)
 {
     // We need to add the action_bar when the main-window appears. If we do this in handle_init it picks up wrong window-bounds and the size doesn't fit.
-    action_bar_layer_add_to_window(&action_bar_layer, window);
+    //action_bar_layer_add_to_window(&action_bar_layer, window);
 }
 
 void handle_main_disappear(Window *window)
 {
     // Since we add the layer on each appear, we remove it on each disappear.
-    action_bar_layer_remove_from_window(&action_bar_layer);
+    //action_bar_layer_remove_from_window(&action_bar_layer);
 }
 
 
+
 void handle_init(AppContextRef ctx)
+{
+    app = ctx;
+
+    window_init(&window, "Sample");
+    window_set_window_handlers(&window, (WindowHandlers) {
+        .appear = (WindowHandler)handle_main_appear,
+        .disappear = (WindowHandler)handle_main_disappear
+    });
+
+    // Init resources
+    resource_init_current_app(&APP_RESOURCES);
+
+    // Load some bitmaps
+    //heap_bitmap_init(&button_image_up, RESOURCE_ID_IMAGE_BUTTON_UP);
+    //heap_bitmap_init(&button_image_down, RESOURCE_ID_IMAGE_BUTTON_DOWN);
+    //heap_bitmap_init(&button_image_setup, RESOURCE_ID_IMAGE_BUTTON_SETUP);
+
+    //action_bar_layer_init(&action_bar_layer);
+    //action_bar_layer_set_click_config_provider(&action_bar_layer, (ClickConfigProvider) click_config_provider);
+    //action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_UP, &button_image_up.bmp);
+    //action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_SELECT, &button_image_setup.bmp);
+    //action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_DOWN, &button_image_down.bmp);
+
+    //window_stack_push(&window, true);
+
+    //Display the settings straight-away
+    display_home(&sample_home);
+}
+
+void handle_init_old(AppContextRef ctx)
 {
     app = ctx;
 
