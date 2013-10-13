@@ -5,7 +5,7 @@
 //  Created by Dirk Mika on 08.05.13.
 //
 //
-//This is a test of the pull system
+//This is a test of the pull system and again
 
 #include "pebble_os.h"
 #include "pebble_app.h"
@@ -29,7 +29,7 @@ SampleHome *_sample_settings;
 void homeMenu_layer_section0_select_callback(int index, void *context)
 {
     bool new_value;
-    
+
     switch (index) {
         case 0:
             _sample_settings->dummy = !_sample_settings->dummy;
@@ -60,11 +60,11 @@ void home_init_settings_window()
         .appear = (WindowHandler)home_handle_appear,
         .unload = (WindowHandler)home_handle_unload
     });
-    
+
     // Don't forget to deinit
     heap_bitmap_init(&menu_icon_0_0, RESOURCE_ID_IMAGE_SETTINGS_SAMPLE);
     heap_bitmap_init(&menu_icon_1_0, RESOURCE_ID_IMAGE_MENU_ICON);
-    
+
     // Section "Settings..."
     homeMenu_section0_items[0] = (SimpleMenuItem) {
         .title = "New Set",
@@ -76,15 +76,15 @@ void home_init_settings_window()
 		.subtitle = "14:15 15/12/2003",
         .icon = NULL,
         .callback = NULL
-    };	
-	
+    };
+
     // Header
     homeMenu_sections[0] = (SimpleMenuSection) {
         .title = NULL,
         .items = homeMenu_section0_items,
         .num_items = ARRAY_LENGTH(homeMenu_section0_items)
     };
-    
+
     // Section "About..."
     homeMenu_section1_items[0] = (SimpleMenuItem) {
         .title = "Breast Stroke",
@@ -97,36 +97,36 @@ void home_init_settings_window()
         .subtitle = "5 x 100m",
         .icon = NULL,
         .callback = NULL
-    };	
+    };
     homeMenu_section1_items[2] = (SimpleMenuItem) {
         .title = "Front Crawl",
         .subtitle = "5 x 100m",
         .icon = NULL,
         .callback = NULL
-    };	
+    };
     homeMenu_section1_items[3] = (SimpleMenuItem) {
         .title = "Front Crawl",
         .subtitle = "5 x 100m",
         .icon = NULL,
         .callback = NULL
-    };	
+    };
     homeMenu_section1_items[4] = (SimpleMenuItem) {
         .title = "Front Crawl",
         .subtitle = "5 x 100m",
         .icon = NULL,
         .callback = NULL
-    };		
-	
-	
-	
-	
+    };
+
+
+
+
     // Header
     homeMenu_sections[1] = (SimpleMenuSection) {
         .title = "Previous Sets",
         .items = homeMenu_section1_items,
         .num_items = ARRAY_LENGTH(homeMenu_section1_items)
     };
-    
+
     simple_menu_layer_init(&homeMenu_layer, window.layer.frame, &window, homeMenu_sections, 2, NULL);
     layer_add_child(&window.layer, &homeMenu_layer.menu.scroll_layer.layer);
 }
@@ -134,10 +134,10 @@ void home_init_settings_window()
 void display_home(SampleHome *sample_settings)
 {
     _sample_settings = sample_settings;
-    
+
     home_init_settings_window();
-    
+
     homeMenu_section0_items[0].subtitle = (sample_settings->dummy ? "YES" : "NO");
-    
+
     window_stack_push(&window, true);
 }
