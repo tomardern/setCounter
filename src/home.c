@@ -29,6 +29,30 @@ SampleHome *_sample_settings;
 
 //menu_layer_reload_data(&homeMenu_layer.menu);
 
+void goto_select_settings(ClickRecognizerRef recognizer, Window *window) {
+    (void)recognizer;
+    (void)window;
+
+    display_settings(&sample_settings);
+
+}
+
+void menu_layer_section0_select_callback(int index, void *context)
+{
+
+    switch (index) {
+        case 0:
+            display_settings(&sample_settings);
+            break;
+        default:
+            break;
+    }
+
+}
+
+
+
+ config[BUTTON_ID_SELECT]->click.handler = (ClickHandler) select_single_click_handler;
 
 void home_handle_appear(Window *window)
 {
@@ -58,7 +82,7 @@ void home_init_settings_window()
     homeMenu_section0_items[0] = (SimpleMenuItem) {
         .title = "New Set",
         .icon = &menu_icon_0_0.bmp,
-        .callback = NULL
+        .callback = &menu_layer_section0_select_callback
     };
     homeMenu_section0_items[1] = (SimpleMenuItem) {
         .title = "Sync Sets",
