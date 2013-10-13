@@ -12,7 +12,7 @@
 #include "pebble_fonts.h"
 
 #include "home.h"
-
+#include "settings.h"
 
 static Window window;
 static SimpleMenuLayer homeMenu_layer;
@@ -50,9 +50,6 @@ void menu_layer_section0_select_callback(int index, void *context)
 
 }
 
-
-
- config[BUTTON_ID_SELECT]->click.handler = (ClickHandler) select_single_click_handler;
 
 void home_handle_appear(Window *window)
 {
