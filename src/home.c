@@ -28,15 +28,6 @@ SampleHome *_sample_settings;
 
 
 //menu_layer_reload_data(&homeMenu_layer.menu);
-
-void goto_select_settings(ClickRecognizerRef recognizer, Window *window) {
-    (void)recognizer;
-    (void)window;
-
-    display_settings(&sample_settings);
-
-}
-
 void menu_layer_section0_select_callback(int index, void *context)
 {
 
