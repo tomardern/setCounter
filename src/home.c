@@ -12,6 +12,7 @@
 #include "pebble_fonts.h"
 
 #include "home.h"
+#include "newset.h" //This needs to know about the newset, so that it can understand what to run
 
 static Window window;
 static SimpleMenuLayer homeMenu_layer;
