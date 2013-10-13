@@ -17,8 +17,8 @@
 static Window window;
 static SimpleMenuLayer homeMenu_layer;
 static SimpleMenuSection homeMenu_sections[2];      // Two sections
-static SimpleMenuItem homeMenu_section0_items[3];   // Section 0 (Some settings...) with one entry
-static SimpleMenuItem homeMenu_section1_items[5];   // Section 1 (About...) with one entry
+static SimpleMenuItem homeMenu_section0_items[2];   // Section 0 (Some settings...) with one entry
+static SimpleMenuItem homeMenu_section1_items[1];   // Section 1 (About...) with one entry
 
 HeapBitmap menu_icon_0_0;
 HeapBitmap menu_icon_1_0;
@@ -26,20 +26,9 @@ HeapBitmap menu_icon_1_0;
 SampleHome *_sample_settings;
 
 
-void homeMenu_layer_section0_select_callback(int index, void *context)
-{
-    bool new_value;
 
-    switch (index) {
-        case 0:
-            _sample_settings->dummy = !_sample_settings->dummy;
-            homeMenu_section0_items[0].subtitle = (_sample_settings->dummy ? "YES" : "NO");
-            break;
-        default:
-            break;
-    }
-    menu_layer_reload_data(&homeMenu_layer.menu);
-}
+//menu_layer_reload_data(&homeMenu_layer.menu);
+
 
 void home_handle_appear(Window *window)
 {
@@ -65,12 +54,6 @@ void home_init_settings_window()
     heap_bitmap_init(&menu_icon_0_0, RESOURCE_ID_IMAGE_SETTINGS_SAMPLE);
     heap_bitmap_init(&menu_icon_1_0, RESOURCE_ID_IMAGE_MENU_ICON);
 
-    // Section "Settings..."
-    homeMenu_section0_items[0] = (SimpleMenuItem) {
-        .title = "Set Switch",
-        .icon = &menu_icon_0_0.bmp,
-        .callback = &homeMenu_layer_section0_select_callback
-    };
      // Section "Settings..."
     homeMenu_section0_items[0] = (SimpleMenuItem) {
         .title = "New Set",
@@ -91,6 +74,8 @@ void home_init_settings_window()
         .num_items = ARRAY_LENGTH(homeMenu_section0_items)
     };
 
+
+
     // Section "About..."
     homeMenu_section1_items[0] = (SimpleMenuItem) {
         .title = "Breast Stroke",
@@ -104,26 +89,6 @@ void home_init_settings_window()
         .icon = NULL,
         .callback = NULL
     };
-    homeMenu_section1_items[2] = (SimpleMenuItem) {
-        .title = "Front Crawl",
-        .subtitle = "5 x 100m",
-        .icon = NULL,
-        .callback = NULL
-    };
-    homeMenu_section1_items[3] = (SimpleMenuItem) {
-        .title = "Front Crawl",
-        .subtitle = "5 x 100m",
-        .icon = NULL,
-        .callback = NULL
-    };
-    homeMenu_section1_items[4] = (SimpleMenuItem) {
-        .title = "Front Crawl",
-        .subtitle = "5 x 100m",
-        .icon = NULL,
-        .callback = NULL
-    };
-
-
 
 
     // Header
