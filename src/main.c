@@ -122,15 +122,15 @@ void handle_init(AppContextRef ctx)
     resource_init_current_app(&APP_RESOURCES);
 
     // Load some bitmaps
-    //heap_bitmap_init(&button_image_up, RESOURCE_ID_IMAGE_BUTTON_UP);
-    //heap_bitmap_init(&button_image_down, RESOURCE_ID_IMAGE_BUTTON_DOWN);
-    //heap_bitmap_init(&button_image_setup, RESOURCE_ID_IMAGE_BUTTON_SETUP);
+    heap_bitmap_init(&button_image_up, RESOURCE_ID_IMAGE_BUTTON_UP);
+    heap_bitmap_init(&button_image_down, RESOURCE_ID_IMAGE_BUTTON_DOWN);
+    heap_bitmap_init(&button_image_setup, RESOURCE_ID_IMAGE_BUTTON_SETUP);
 
-    //action_bar_layer_init(&action_bar_layer);
-    //action_bar_layer_set_click_config_provider(&action_bar_layer, (ClickConfigProvider) click_config_provider);
-    //action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_UP, &button_image_up.bmp);
-    //action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_SELECT, &button_image_setup.bmp);
-    //action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_DOWN, &button_image_down.bmp);
+    action_bar_layer_init(&action_bar_layer);
+    action_bar_layer_set_click_config_provider(&action_bar_layer, (ClickConfigProvider) click_config_provider);
+    action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_UP, &button_image_up.bmp);
+    action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_SELECT, &button_image_setup.bmp);
+    action_bar_layer_set_icon(&action_bar_layer, BUTTON_ID_DOWN, &button_image_down.bmp);
 
     window_stack_push(&window, true);
 
@@ -140,9 +140,9 @@ void handle_init(AppContextRef ctx)
 
 void handle_deinit(AppContextRef ctx)
 {
-    //heap_bitmap_deinit(&button_image_up);
-    //heap_bitmap_deinit(&button_image_down);
-    //heap_bitmap_deinit(&button_image_setup);
+    heap_bitmap_deinit(&button_image_up);
+    heap_bitmap_deinit(&button_image_down);
+    heap_bitmap_deinit(&button_image_setup);
 
     window_deinit(&window);
 }
@@ -153,8 +153,8 @@ void handle_deinit(AppContextRef ctx)
 void pbl_main(void *params)
 {
     PebbleAppHandlers handlers = {
-        .init_handler = &handle_init
-        //.deinit_handler = &handle_deinit
+        .init_handler = &handle_init,
+        .deinit_handler = &handle_deinit
     };
     app_event_loop(params, &handlers);
 }
